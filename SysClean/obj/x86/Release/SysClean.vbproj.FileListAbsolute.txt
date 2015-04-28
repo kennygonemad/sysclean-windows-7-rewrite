@@ -1,0 +1,31 @@
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysCleanVersionHistory.txt
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysClean.exe.config
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysClean.exe
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysClean.pdb
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysClean.xml
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\ResolveAssemblyReference.cache
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\SysClean.Resources.resources
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\SysClean.exe
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\SysClean.xml
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\SysClean.pdb
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource.read.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource.write.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Release\SysClean.SkipList.xml
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.exe.config
+H:\Projects\SysClean\SysClean\obj\x86\Release\SysClean.exe
+H:\Projects\SysClean\SysClean\obj\x86\Release\SysClean.xml
+H:\Projects\SysClean\SysClean\obj\x86\Release\SysClean.pdb
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.CustomDeleteList.xml
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.SkipList.xml
+H:\Projects\SysClean\SysClean\bin\Release\SysCleanVersionHistory.txt
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.exe
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.pdb
+H:\Projects\SysClean\SysClean\bin\Release\SysClean.xml
+H:\Projects\SysClean\SysClean\obj\x86\Release\ResolveAssemblyReference.cache
+H:\Projects\SysClean\SysClean\obj\x86\Release\SysClean.Resources.resources
+H:\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource.read.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Release\GenerateResource.write.1.tlog

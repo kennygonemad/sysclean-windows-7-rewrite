@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- type = either folder or file -->
+<!-- SAMPLE ENTRY 
+  <item type="folder">C:\FTP</item>
+-->
+<deletelist version="1">
+  <items>
+  </items>
+</deletelist>

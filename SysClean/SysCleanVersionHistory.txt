@@ -1,0 +1,87 @@
+﻿Updated By Nathan Payne
+1.0.6.22 - 06/02/14
+	+ Added the ability to manually specify files and locations to delete (refers to an XML file located in the same folder as the app)
+	+ Added a new command "/noquit" line parameter to not quit syscleaner on completion of commands (it script to specifiy log path etc before running)
+	/ Optimised and reduced code duplication in command line parameter handler
+	x Fixed a bug in the command line parameter log redirection - now less prone to failure
+		NOTE: Remember to put quotes around the whole /log: command if there is a space the store path
+
+1.0.6.21 - 28/08/13
+	x Fixed some code ordering issues that was cause text and delete blocks to be the incorrect colour
+
+1.0.6.20 - 19/08/13
+	+ Added the ability to skip files / folders (refers to an XML file located in the same folder as the app)
+	/ Optimised part of the delete routine to improve performance
+	/ changed delete and failed stat line in the delete routine to show skipped items
+
+1.0.5.19 - 05/08/13
+	+ Added application global error catch. This will help handle errors more gracefully. On application crash a log file will be created in C:\FTP
+	/ re-organised some startup code to improve efficiency
+	/ removed support for storing settings in an ini as all parameters can be specified using command line arguments.
+	x fixed issue where the application would crash if the log folder did not exist and the user did not have admin rights.
+
+1.0.5.18 - 16/07/13
+	+ ALL commands can now be passed via command line parameters to allow for fine grained control over cleaning. See help for the list
+	+ Add new command parameter /forcegreyscale to make the console greyscale on auto commands - This should be your first command
+	+ Add new command parameter /log:"<logpath>" for setting log path on command line runs - This must be the last command!
+	+ Add new command parameter /logremoveditems - This will log every file that is removed not just the files that could not be deleted - Place this before your cleaning commands!
+	/ Improve app load times by removing un needed imports
+	/ Optimise application startup routine so that command line parameters are handled before anything else
+	/ Added menu option to settings menu to allow you to exit without saving
+	x fixed issue where the space stat and space freed items are displayed twice when running the auto command
+	x fixed issue where using upper case letters in the command resulted in unknown command being returned.
+
+1.0.5.17 - 04/07/13
+	+ add new command /ieccu (current user) /iecau (all users) which cleans all IE cookies from user profiles
+		These commands have been added to /fc and /fcnocc
+		These commands are not available directly from a command line parameter however they will run using the fc and fcnoncc commands
+	/ updated the notes section of the help to clarify command line argument parameters that can be used
+	x fixed some small display issues
+
+1.0.5.16 - 04/02/13
+	/ changed framework to .net 4.0 client profile to improve performance
+	x fixed a few gramatical errors
+	x fixed small error where in the auto full command it could run the internet cache clean twice
+
+1.0.2.15-2 - 27/09/12
+	x fixed a small display issues
+
+1.0.2.15 - 25/09/12
+	x fixed issue where total space recovered was not being showed for /fcnoncc /fc /auto command line parameters 
+	x fixed some small display issues
+
+1.0.2.14 - 19/09/12
+	+ add a new command /rb that cleans the recycle bin on both drives
+	x fixed a spelling mistake
+
+1.0.2.13 - 19/09/12
+	/ improved deleting of folders
+	/ improved displaying of space recovered now shows C and D amounts seperately
+
+1.0.2.12 - 09/08/12
+	+ add a new command /ietfau that cleans all users temporary internet files
+	+ add a new command /ietfcu that cleans the current users temporary files
+	+ add a new command 'viewlog' that opens the current log
+	+ add a new command 'viewpreviouslog' that opens the previous log
+	+ add a new command 'spacestat' that shows the free / total spaces for C:\ and D:\
+	/ added the 'ietfau' command to the 'FC', 'FCNONCC', 'AUTO' commands
+	/ improved console layout when running batch commands such as 'fcnoncc' and 'fc'
+
+1.0.2.11 - 11/05/12
+	+ Add a new command /fcnoncc that cleans all locations except the nalcache
+	+ Add a new command /autoreset that set the automode to do an all user clean next run
+	/ Improved the logging function - now saves the last log as 'SysClean_%ComputerName%-PREVIOUS.log'
+	- Removed the nalcache clean from the auto command
+	x Fixed some small size calculation issues
+	x Fixed the setting of the auto mode in registry
+
+1.0.2.10 - 29/04/12
+	/ Fine tune the /auto command to the carry out the required settings
+
+1.0.2.9  - 28/04/12
+	+ Add the Auto Command
+	+ Add file size totals to clean results
+
+1.0.0.0 -> 1.0.2.9
+	Application Development
+

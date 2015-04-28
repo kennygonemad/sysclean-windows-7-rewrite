@@ -1,0 +1,50 @@
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\bin\Debug\SysClean.exe
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\bin\Debug\SysClean.pdb
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\bin\Debug\SysClean.xml
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\SysClean.Resources.resources
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\SysClean.exe
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\SysClean.xml
+C:\Users\nathan.PHOTON\AppData\Local\Temporary Projects\SysClean\obj\x86\Debug\SysClean.pdb
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.exe
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.pdb
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.xml
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\ResolveAssemblyReference.cache
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.Resources.resources
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.read.1.tlog
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.write.1.tlog
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.exe
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.xml
+\\re-hyperv\redirectedusers$\nathan\documents\visual studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.pdb
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.exe
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.xml
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.pdb
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.exe.config
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.Resources.resources
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.exe
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.pdb
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Debug\SysClean.xml
+D:\userdata\paynenat\My Documents\Visual Studio 2010\Projects\SysClean\SysClean\bin\Debug\SysCleanVersionHistory.txt
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.CustomDeleteList.xml
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.SkipList.xml
+H:\Projects\SysClean\SysClean\bin\Debug\SysCleanVersionHistory.txt
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.exe.config
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.exe
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.pdb
+H:\Projects\SysClean\SysClean\bin\Debug\SysClean.xml
+H:\Projects\SysClean\SysClean\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.Resources.resources
+H:\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.read.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Debug\GenerateResource.write.1.tlog
+H:\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.exe
+H:\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.xml
+H:\Projects\SysClean\SysClean\obj\x86\Debug\SysClean.pdb
