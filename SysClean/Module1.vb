@@ -24,9 +24,13 @@ Module Module1
     Dim TS_CBatchSizeSave As ULong = 0
     Dim TS_DBatchSizeSave As ULong = 0
 
+    Dim OSVersion As Integer = 0
+
+
     ReadOnly CV_APPLICATIONLOGHEADER As String = CV_APPLICATIONLOGHEADER
     ReadOnly CV_CONSOLEHEADER As String = "                                  System Cleaner" & Environment.NewLine & _
                                           "                                Version: " & My.Application.Info.Version.ToString & Environment.NewLine
+
 
     Private Function SetupColors(Optional ByVal forceGreyscale As Boolean = False) As String
         'Setup Colors
@@ -79,6 +83,10 @@ Module Module1
     End Sub
 
     Sub Main()
+        If (Environment.OSVersion.Version.Major = 6) Then
+            OSVersion = 1
+        End If
+
         ' Setup a trap to catch any gremlins so the end user doesnt see them
         AddHandler AppDomain.CurrentDomain.UnhandledException, AddressOf UnhandledExceptionTrapper
 
@@ -435,6 +443,7 @@ SettingsPage:
         Console.Clear()
         Console.WriteLine(CV_CONSOLEHEADER)
         Console.WriteLine("Application Settings:")
+        Console.WriteLine(OSVersion)
         Console.WriteLine(" 1. Log Removed Items as well as failed items (Currently: " & GS_ShowRemovedInLog & ")")
         Console.WriteLine(" 2. Greyscale Mode (Currently: " & GS_Greyscale & ")")
         Console.WriteLine(" 3. Log Path (Currently: " & GS_LogDir & ")")
@@ -560,32 +569,48 @@ SetPath:
     Private Sub UC_Routine()
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Current User Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Current User Cleaner -- ")
-        Dim Items As New ArrayList
-        Items.Add("D:\USERDATA\" & Environment.UserName & "\Temp")
-        Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temp")
-        MultiFolderClear(Items)
+        If (OSVersion = 0) Then
+            Dim Items As New ArrayList
+            Items.Add("D:\USERDATA\" & Environment.UserName & "\Temp")
+            Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temp")
+            MultiFolderClear(Items)
+        Else
+            Dim Items As New ArrayList
+            Items.Add("D:\USERS\" & Environment.UserName & "\AppData\Local\Temp")
+            'Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temp")
+            MultiFolderClear(Items)
+        End If
     End Sub
 
     Private Sub AUC_Routine()
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "All User Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- All User Cleaner -- ")
         Dim FolderList As New ArrayList
-        Try
-            For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
-                FolderList.Add(di & "\Temp")
-            Next
-        Catch ex As Exception
-            My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
-        End Try
+        If (OSVersion = 0) Then
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\Temp")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
 
-        Try
-            For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
-                FolderList.Add(di & "\Local Settings\Temp")
-            Next
-        Catch ex As Exception
-            My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
-        End Try
-
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\Local Settings\Temp")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        Else
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("D:\USERS", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\AppData\Local\Temp")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        End If
 
         MultiFolderClear(FolderList)
 
@@ -595,8 +620,13 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Recycle Bin Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Recycle Bin Cleaner -- ")
         Dim Items As New ArrayList
-        Items.Add("C:\Recycler")
-        Items.Add("D:\Recycler")
+        If (OSVersion = 0) Then
+            Items.Add("C:\Recycler")
+            Items.Add("D:\Recycler")
+        Else
+            Items.Add("c:\$Recycle.Bin")
+        End If
+
         MultiFolderClear(Items)
     End Sub
 
@@ -604,13 +634,29 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean All Users Temporary Internet Files: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean All Users Temporary Internet Files -- ")
         Dim FolderList As New ArrayList
-        Try
-            For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
-                FolderList.Add(di & "\Local Settings\Temporary Internet Files")
-            Next
-        Catch ex As Exception
-            My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
-        End Try
+
+        If (OSVersion = 0) Then
+
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\Local Settings\Temporary Internet Files")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        Else
+
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("D:\users", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\AppData\Local\Microsoft\Windows\Temporary Internet Files")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+
+        End If
+
+
         MultiFolderClear(FolderList)
 
     End Sub
@@ -619,21 +665,37 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean Current Users Temporary Internet Files: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean Current Users Temporary Internet Files -- ")
         Dim Items As New ArrayList
-        Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temporary Internet Files")
+        If (OSVersion = 0) Then
+            Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temporary Internet Files")
+        Else
+            Items.Add("d:\users\" & Environment.UserName & "\AppData\Local\Microsoft\Windows\Temporary Internet Files")
+        End If
         MultiFolderClear(Items)
+
     End Sub
 
     Private Sub IECAU_Routine()
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean All Users Cookies Folders: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean All Users Cookies Folders -- ")
         Dim FolderList As New ArrayList
-        Try
-            For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
-                FolderList.Add(di & "\Application Data\Microsoft\Internet Explorer\Cookies")
-            Next
-        Catch ex As Exception
-            My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
-        End Try
+        If (OSVersion = 0) Then
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\Application Data\Microsoft\Internet Explorer\Cookies")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        Else
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("D:\users", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\AppData\Roaming\Microsoft\Windows\Cookies")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        End If
+
         MultiFolderClear(FolderList)
 
     End Sub
@@ -642,16 +704,24 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean Current Users Cookies Folder: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean Current Users Cookies Folder -- ")
         Dim Items As New ArrayList
-        Items.Add("D:\USERDATA\" & Environment.UserName & "\Application Data\Microsoft\Internet Explorer\Cookies")
+        If (OSVersion = 0) Then
+            Items.Add("D:\USERDATA\" & Environment.UserName & "\Application Data\Microsoft\Internet Explorer\Cookies")
+        Else
+            Items.Add("D:\users\" & Environment.UserName & "\AppData\Roaming\Microsoft\Windows\Cookies")
+        End If
+
         MultiFolderClear(Items)
     End Sub
 
     Private Sub NCC_Routine()
-        My.Computer.FileSystem.WriteAllText(GS_LogDir, "NALCACHE Cleaner: " & Environment.NewLine, True)
-        Console.WriteLine(Environment.NewLine & " -- NALCACHE Cleaner -- ")
-        Dim Items As New ArrayList
-        Items.Add("C:\NALCACHE\QLDHEALTH")
-        MultiFolderClear(Items)
+        If(OSVersion = 0) then
+            My.Computer.FileSystem.WriteAllText(GS_LogDir, "NALCACHE Cleaner: " & Environment.NewLine, True)
+            Console.WriteLine(Environment.NewLine & " -- NALCACHE Cleaner -- ")
+            Dim Items As New ArrayList
+            Items.Add("C:\NALCACHE\QLDHEALTH")
+            MultiFolderClear(Items)
+        End If
+
     End Sub
 
     Private Sub FTPC_Routine()
@@ -684,7 +754,6 @@ SetPath:
         Dim Items As New ArrayList
         Items.Add("C:\WINDOWS\Temp")
         MultiFolderClear(Items)
-
     End Sub
 
     Private Sub CUSTOM_Routine()
