@@ -714,13 +714,19 @@ SetPath:
     End Sub
 
     Private Sub NCC_Routine()
-        If(OSVersion = 0) then
+        Dim Items As New ArrayList
+        If (OSVersion = 0) Then
             My.Computer.FileSystem.WriteAllText(GS_LogDir, "NALCACHE Cleaner: " & Environment.NewLine, True)
             Console.WriteLine(Environment.NewLine & " -- NALCACHE Cleaner -- ")
-            Dim Items As New ArrayList
             Items.Add("C:\NALCACHE\QLDHEALTH")
-            MultiFolderClear(Items)
+        Else
+            My.Computer.FileSystem.WriteAllText(GS_LogDir, "SCCM Cache Cleaner: " & Environment.NewLine, True)
+            Console.WriteLine(Environment.NewLine & " -- SCCM Cache Cleaner -- ")
+            Items.Add("C:\windows\ccm")
         End If
+        MultiFolderClear(Items)
+
+
 
     End Sub
 
@@ -737,13 +743,24 @@ SetPath:
         Console.WriteLine(Environment.NewLine & " -- CD Burning Temp Dir Cleaner -- ")
         Dim FolderList As New ArrayList
 
-        Try
-            For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
-                FolderList.Add(di & "\Local Settings\Application Data\Microsoft\CD Burning")
-            Next
-        Catch ex As Exception
-            My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
-        End Try
+        If (OSVersion = 0) Then
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\Local Settings\Application Data\Microsoft\CD Burning")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        Else
+            Try
+                For Each di In My.Computer.FileSystem.GetDirectories("d:\users", FileIO.SearchOption.SearchTopLevelOnly)
+                    FolderList.Add(di & "\AppData\Local\Microsoft\Windows\Burn\Temporary Burn Folder")
+                Next
+            Catch ex As Exception
+                My.Computer.FileSystem.WriteAllText(GS_LogDir, "ERROR:" & ex.Message & Environment.NewLine, True)
+            End Try
+        End If
+
 
         MultiFolderClear(FolderList)
     End Sub
