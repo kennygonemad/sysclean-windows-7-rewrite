@@ -1,4 +1,9 @@
-﻿Updated By Nathan Payne
+﻿Updated By Nathan Payne and Gareth Kenny
+1.1.0.0 - 30/04/15
+	+ Added Windows 7 support
+		+ modified all execution branches to check for windows 7 and to clean the right location for win 7
+		+ execution branches will auto pick the right paths to clean based on the system variables for os
+	
 1.0.6.22 - 06/02/14
 	+ Added the ability to manually specify files and locations to delete (refers to an XML file located in the same folder as the app)
 	+ Added a new command "/noquit" line parameter to not quit syscleaner on completion of commands (it script to specifiy log path etc before running)
