@@ -24,11 +24,11 @@ Module Module1
     Dim TS_CBatchSizeSave As ULong = 0
     Dim TS_DBatchSizeSave As ULong = 0
 
-    Dim OSVersion As Integer = 0
+    Dim Win7Check As Integer = 0
 
 
     ReadOnly CV_APPLICATIONLOGHEADER As String = CV_APPLICATIONLOGHEADER
-    ReadOnly CV_CONSOLEHEADER As String = "                                  System Cleaner" & Environment.NewLine & _
+    ReadOnly CV_CONSOLEHEADER As String = "                                  System Cleaner" & Environment.NewLine &
                                           "                                Version: " & My.Application.Info.Version.ToString & Environment.NewLine
 
 
@@ -84,7 +84,7 @@ Module Module1
 
     Sub Main()
         If (Environment.OSVersion.Version.Major = 6) Then
-            OSVersion = 1
+            Win7Check = 1
         End If
 
         ' Setup a trap to catch any gremlins so the end user doesnt see them
@@ -443,7 +443,7 @@ SettingsPage:
         Console.Clear()
         Console.WriteLine(CV_CONSOLEHEADER)
         Console.WriteLine("Application Settings:")
-        Console.WriteLine(OSVersion)
+        Console.WriteLine(Win7Check)
         Console.WriteLine(" 1. Log Removed Items as well as failed items (Currently: " & GS_ShowRemovedInLog & ")")
         Console.WriteLine(" 2. Greyscale Mode (Currently: " & GS_Greyscale & ")")
         Console.WriteLine(" 3. Log Path (Currently: " & GS_LogDir & ")")
@@ -569,7 +569,7 @@ SetPath:
     Private Sub UC_Routine()
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Current User Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Current User Cleaner -- ")
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Dim Items As New ArrayList
             Items.Add("D:\USERDATA\" & Environment.UserName & "\Temp")
             Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temp")
@@ -586,7 +586,7 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "All User Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- All User Cleaner -- ")
         Dim FolderList As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Try
                 For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
                     FolderList.Add(di & "\Temp")
@@ -620,7 +620,7 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Recycle Bin Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Recycle Bin Cleaner -- ")
         Dim Items As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Items.Add("C:\Recycler")
             Items.Add("D:\Recycler")
         Else
@@ -635,7 +635,7 @@ SetPath:
         Console.WriteLine(Environment.NewLine & " -- Clean All Users Temporary Internet Files -- ")
         Dim FolderList As New ArrayList
 
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
 
             Try
                 For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
@@ -665,7 +665,7 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean Current Users Temporary Internet Files: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean Current Users Temporary Internet Files -- ")
         Dim Items As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Items.Add("C:\Documents and Settings\" & Environment.UserName & "\Local Settings\Temporary Internet Files")
         Else
             Items.Add("d:\users\" & Environment.UserName & "\AppData\Local\Microsoft\Windows\Temporary Internet Files")
@@ -678,7 +678,7 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean All Users Cookies Folders: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean All Users Cookies Folders -- ")
         Dim FolderList As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Try
                 For Each di In My.Computer.FileSystem.GetDirectories("D:\USERDATA", FileIO.SearchOption.SearchTopLevelOnly)
                     FolderList.Add(di & "\Application Data\Microsoft\Internet Explorer\Cookies")
@@ -704,7 +704,7 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "Clean Current Users Cookies Folder: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- Clean Current Users Cookies Folder -- ")
         Dim Items As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Items.Add("D:\USERDATA\" & Environment.UserName & "\Application Data\Microsoft\Internet Explorer\Cookies")
         Else
             Items.Add("D:\users\" & Environment.UserName & "\AppData\Roaming\Microsoft\Windows\Cookies")
@@ -715,14 +715,14 @@ SetPath:
 
     Private Sub NCC_Routine()
         Dim Items As New ArrayList
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             My.Computer.FileSystem.WriteAllText(GS_LogDir, "NALCACHE Cleaner: " & Environment.NewLine, True)
             Console.WriteLine(Environment.NewLine & " -- NALCACHE Cleaner -- ")
             Items.Add("C:\NALCACHE\QLDHEALTH")
         Else
             My.Computer.FileSystem.WriteAllText(GS_LogDir, "SCCM Cache Cleaner: " & Environment.NewLine, True)
             Console.WriteLine(Environment.NewLine & " -- SCCM Cache Cleaner -- ")
-            Items.Add("C:\windows\ccm")
+            Items.Add("C:\windows\ccmcache")
         End If
         MultiFolderClear(Items)
 
@@ -734,7 +734,11 @@ SetPath:
         My.Computer.FileSystem.WriteAllText(GS_LogDir, "FTP Dir Cleaner: " & Environment.NewLine, True)
         Console.WriteLine(Environment.NewLine & " -- FTP Dir Cleaner -- ")
         Dim Items As New ArrayList
-        Items.Add("D:\FTP")
+        Items.Add("C:\FTP")
+        If Win7Check = 0 Then
+            Items.Add("D:\FTP")
+        End If
+
         MultiFolderClear(Items)
     End Sub
 
@@ -743,7 +747,7 @@ SetPath:
         Console.WriteLine(Environment.NewLine & " -- CD Burning Temp Dir Cleaner -- ")
         Dim FolderList As New ArrayList
 
-        If (OSVersion = 0) Then
+        If (Win7Check = 0) Then
             Try
                 For Each di In My.Computer.FileSystem.GetDirectories("C:\Documents and Settings", FileIO.SearchOption.SearchTopLevelOnly)
                     FolderList.Add(di & "\Local Settings\Application Data\Microsoft\CD Burning")
